@@ -1,0 +1,15 @@
+import { Injectable } from '@nestjs/common';
+import { Encrypter } from '../abstract/encrypter';
+import { JwtService } from '@nestjs/jwt';
+
+@Injectable()
+export class JwtEncrypter implements Encrypter {
+  constructor(private readonly jwtService: JwtService) {}
+
+  encrypt(payload: Record<string, unknown>): Promise<string> {
+    return this.jwtService.signAsync(payload, {
+      secret: process.env.JWT_SECRET,
+      expiresIn: process.env.JWT_EXPIRES_IN,
+    });
+  }
+}
