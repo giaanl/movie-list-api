@@ -30,4 +30,9 @@ export class AuthenticationController {
     });
     return result;
   }
+
+  @Get('/token-valid')
+  async validToken(): Promise<boolean> {
+    return true;
+  }
 }
