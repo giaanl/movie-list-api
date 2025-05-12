@@ -1,0 +1,22 @@
+name: movie-list
+
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=postgres
+      - DATABASE_DOCKER_PORT=5432
+      - POSTGRES_HOST=localhost
+      - POSTGRES_NAME=postgres
+      - POSTGRES_TYPE=postgres
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD', 'pg_isready', '--username', 'postgres']
+      interval: 15s
+      timeout: 5s
+      retries: 10
+      start_period: 15s
