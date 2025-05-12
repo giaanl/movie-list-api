@@ -13,6 +13,14 @@ export class Movie extends BaseEntity {
   title: string;
 
   @Column({
+    type: 'varchar',
+    name: 'original_title',
+    nullable: true,
+    length: 100,
+  })
+  originalTitle: string;
+
+  @Column({
     type: 'text',
     name: 'description',
     nullable: true,
@@ -29,25 +37,17 @@ export class Movie extends BaseEntity {
   @Column({
     type: 'date',
     name: 'release_date',
-    nullable: true,
+    nullable: false,
   })
   releaseDate: Date;
 
   @Column({
     type: 'varchar',
-    name: 'image_path',
+    name: 'image_link',
     nullable: true,
     length: 255,
   })
-  imagePath: string;
-
-  @Column({
-    type: 'varchar',
-    name: 'user_id',
-    nullable: false,
-    length: 36,
-  })
-  userId: string;
+  imageLink: string;
 
   @Column({
     type: 'varchar',

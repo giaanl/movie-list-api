@@ -19,7 +19,7 @@ export class EnvironmentConfigService implements DatabaseConfig {
   }
 
   getDatabasePassword(): string {
-    return this.configService.get<string>('DATABASE_PASSWORD') || '';
+    return this.configService.get<string>('DATABASE_PASSWORD') || 'postgres';
   }
 
   getDatabaseName(): string {
